@@ -536,10 +536,11 @@ typeselect.selectedIndex = 0;
 </head>
 <body>
 
-<a id="github" href="https://github.com/hagenburger">
-  <span>Fork me on GitHub!</span>
-</a>
-
+<div class="right ribbon-holder"> 
+          <a href="https://github.com/gustavopinto/multitrans" class="red ribbon"> 
+            <span class="text">Fork me on GitHub</span> 
+          </a> 
+</div> 	
 <div>
 
   <h1 align="left"><span class="STYLE13">Repository of Publications on <span class="STYLE19">M</span>ulticore <span class="STYLE19">T</span>ransformations</h1>

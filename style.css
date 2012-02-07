@@ -1,61 +1,60 @@
-@import "compass";
 
-#github {
-  left: -65px;
-  height: 30px;
-  top: 40px;
+.ribbon-holder {
   position: absolute;
-  text-decoration: none;
-  width: 250px;
-  @include rotate(-45deg);
-  span {
-    background: black;
-    color: white;
-    font-size: 14px;
-    left: 0;
-    padding: 5px 0;
-    position: absolute;
-    text-align: center;
-    width: 250px;
-    @include box-shadow(rgba(black, 0.2) 1px 1px 10px);
-    // If you’re using Compass < 0.11 use this:
-    // @include box-shadow(rgba(black, 0.2), 1px, 1px, 10px);
-    @include transition(opacity, 1s);
-    &:last-child {
-      /* this is the backside */
-      background: red;
-      opacity: 0;
-    }
-  }
-  :hover span {
-    &:first-child {
-      opacity: 0;
-    }
-    &:last-child {
-      opacity: 1;
-    }
-  }
+  top: 0;
+  overflow: hidden;
+  height: 20em;
 }
 
-@media all and (-webkit-transform-3d) {
-  #github {
-    span {
-      opacity: 1 !important;
-      -webkit-backface-visibility: hidden;
-      -webkit-transition: -webkit-transform 1s;
-      &:last-child {
-        -webkit-transform: rotateX(180deg);
-      }
-    }
-    &:hover span {
-      &:first-child {
-        -webkit-transform: rotateX(180deg);
-      }
-      &:last-child {
-        -webkit-transform: rotateX(360deg);
-      }
-    }
-  }
+.right.ribbon-holder {
+  right: 0;
+}
+
+.ribbon,
+.ribbon:hover {
+  text-decoration: none;
+}
+
+.ribbon {
+  letter-spacing: -1.1px;
+  opacity: 0.95;
+
+  padding: 0.25em 0;
+  position: relative;
+  top: 3em;
+
+  /* Defaults friendly for white pages. */
+  -moz-box-shadow: 0 0 13px #888;
+  -webkit-box-shadow: 0 0 13px #888;
+  color: #FFF;
+  display: block;
+  line-height: 1.35em;
+
+  font-family: "Arial", Arial, sans-serif; font-size: 14px;
+}
+
+.ribbon .text {
+  padding: 0.1em 3em;
+}
+
+.right .ribbon {
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  right: -2.6em;
+}
+
+.red.ribbon {
+  background-color: #9a0000;
+  background: -webkit-gradient(linear, left bottom, left top, from(#9a0000), to(#a90000));
+}
+
+.red.ribbon .text {
+  border: 1px solid #bf6060;
+}
+
+.green.ribbon {
+  background-color: #006e00;
+  background: -webkit-gradient(linear, left bottom, left top, from(#006e00), to(#007200));
 }
 
 
