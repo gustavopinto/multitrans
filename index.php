@@ -1,30 +1,30 @@
 <?
 $vLines = file("multirans.bib");
+
 $vPublications = array();
 $sBuffer = "";
 for ($i =0; $i < count($vLines); $i++) {
-		if(strstr($vLines[$i], "@")) {
-			array_push($vPublications, $sBuffer);
-			$sBuffer	= $lines[$i];
-		} else {
-			$sBuffer .= $lines[$i];
-		}
+	if(strstr($vLines[$i], "@")) {
+		array_push($vPublications, $sBuffer);
+		$sBuffer = $vLines[$i];
+	} else {
+		$sBuffer .= $vLines[$i];
+	}
 }
+array_push($vPublications, $sBuffer);
 
-function getAuthor($sPublication) {
-	$sPublication = str_replace("= {", "", trim($sPublication));
+function getProperty($sPublication, $sProperty) {
+	$sPublication = str_replace("= {", "", trim($sPublication));	
 
-	$nBegin = strpos($sPublication, "author");
+	$nBegin = strpos($sPublication, $sProperty) + strlen($sProperty);
 	$string = substr($sPublication, $nBegin);
 	$nEnd = strpos($string, "}");
 
 	$sPublication = substr($sPublication, $nBegin, $nEnd);
 
-
-	return str_replace("author", "", trim($sPublication));;
+	return trim($sPublication);
 }
 
-unset($vPublications[0]);
 
 ?>
 
@@ -751,14 +751,14 @@ function getParent(el, pTagName) {
 			foreach ($vPublications as $publication) {
 				print "<tr id='deAbreuMd07' class='entry'>";
 				print "<td style='text-align: center;'>2011.10.01</td>";
-				print "<td>".getAuthor($publication)."</td>";
-				print "<td>Paraforming: Forming Parallel Haskell Programs Using Novel Refactoring Techniques";
+				print "<td>".getProperty($publication, "author")."</td>";
+				print "<td>".getProperty($publication, "title");
 				print "<p class='infolinks'>";
 				print "[<a href='javascript:toggleInfo('deAbreuMd07','abstract')'>Abstract</a>]  ";
 				print "[<a href='javascript:toggleInfo('deAbreuMd07','bibtex')'>BibTeX</a>] ";
 				print "[<a href='http://dx.doi.org/10.1145/1276958.1277181'>DOI</a>] </p> </td>";
-				print "<td style='text-align: center;'>2007</td>";
-				print "<td>Proceedings of the 9th annual Conference on Genetic and Evolutionary Computation (GECCO '07), pp. 1138-1138, London  England, 7-11 July  &nbsp;</td>";
+				print "<td style='text-align: center;'>".getProperty($publication, "year")."</td>";
+				print "<td>".getProperty($publication, "booktitle").", ".getProperty($publication, "address").".</td>";
 				print "<td>Inproceedings</td>";
 				print "<td>Testing and Debugging</td></tr>";
 				print "<tr id='abs_deAbreuMd07' class='abstract noshow'>";
@@ -780,6 +780,6 @@ function getParent(el, pTagName) {
 		?>
 		</table></tbody></table>
 
-<p class="style11">This template was borred from <a href="http://crestweb.cs.ucl.ac.uk/resources/sbse_repository/repository.html">SBSE Repository</a>. Thanks <a href="http://www.cs.ucl.ac.uk/staff/Yuanyuan.Zhang/">Yuanyuan Zhang</a>.</p>
+<p class="style11">This template was borred from <a href="http://crestweb.cs.ucl.ac.uk/resources/sbse_repository/repository.html">SBSE Repository</a>. Thanks <a href="http://www.cs.ucl.ac.uk/staff/Yuanyuan.Zhang/">Yuanyuan Zhang</a>.</p>	
 
 </body></html

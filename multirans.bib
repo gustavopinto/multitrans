@@ -1,3 +1,20 @@
+@inproceedings{Schafer:2010,
+ author = {Max Schafer, Julian Dolby, Manu Sridharan, Emina Torlak, Frank Tip},
+ title = {Correct refactoring of concurrent java code},
+ booktitle = {Proceedings of the 24th European conference on Object-oriented programming},
+ series = {ECOOP'10},
+ year = {2010},
+ isbn = {3-642-14106-4, 978-3-642-14106-5},
+ location = {Maribor, Slovenia},
+ pages = {225--249},
+ numpages = {25},
+ url = {http://dl.acm.org/citation.cfm?id=1883978.1883994},
+ acmid = {1883994},
+ publisher = {Springer-Verlag},
+ address = {Berlin, Heidelberg},
+ abstract = Automated refactorings as implemented in modern IDEs for Java usually make no special provisions for concurrent code. Thus, refactored programs may exhibit unexpected new concurrent behaviors. We analyze the types of such behavioral changes caused by current refactoring engines and develop techniques to make them behavior-preserving, ranging from simple techniques to deal with concurrency-related language constructs to a framework that computes and tracks synchronization dependencies. By basing our development directly on the Java Memory Model, we can state and prove precise correctness results about refactoring concurrent programs. We show that a broad range of refactorings are not influenced by concurrency at all, whereas other important refactorings can be made behavior-preserving for correctly synchronized programs by using our framework. Experience with a prototype implementation shows that our techniques are easy to implement and require only minimal changes to existing refactoring engines.
+} 
+
 @inproceedings{Dig:2009,
  author = {Danny Dig, John Marrero and Michael D. Ernst},
  title = {Refactoring sequential Java code for concurrency via concurrent libraries},
@@ -73,22 +90,4 @@
  abstract = Recent versions of the Java standard library offer flexible locking constructs that go beyond the language’s built-in monitor locks in terms of features, and that can be fine-tuned to suit specific application scenarios. Under certain conditions, the use of these constructs can improve performance significantly, by reducing lock contention. However, the code transformations needed to convert between locking constructs are non-trivial, and great care must be taken to update lock usage throughout the program consistently. We present Relocker, an automated tool that assists programmers with refactoring synchronized blocks into ReentrantLocks and ReadWriteLocks, to make exploring the performance tradeoffs among these constructs easier. In experiments on a collection of real-world Java applications, Relocker was able to refactor over 80\% of built-in monitors into ReentrantLocks. Additionally, in most cases the tool could automatically infer the same ReadWriteLock usage that programmers had previously introduced manually.
 } 
 
-
-
-@inproceedings{Schafer:2010,
- author = {Max Schafer, Julian Dolby, Manu Sridharan, Emina Torlak, Frank Tip},
- title = {Correct refactoring of concurrent java code},
- booktitle = {Proceedings of the 24th European conference on Object-oriented programming},
- series = {ECOOP'10},
- year = {2010},
- isbn = {3-642-14106-4, 978-3-642-14106-5},
- location = {Maribor, Slovenia},
- pages = {225--249},
- numpages = {25},
- url = {http://dl.acm.org/citation.cfm?id=1883978.1883994},
- acmid = {1883994},
- publisher = {Springer-Verlag},
- address = {Berlin, Heidelberg},
- abstract = Automated refactorings as implemented in modern IDEs for Java usually make no special provisions for concurrent code. Thus, refactored programs may exhibit unexpected new concurrent behaviors. We analyze the types of such behavioral changes caused by current refactoring engines and develop techniques to make them behavior-preserving, ranging from simple techniques to deal with concurrency-related language constructs to a framework that computes and tracks synchronization dependencies. By basing our development directly on the Java Memory Model, we can state and prove precise correctness results about refactoring concurrent programs. We show that a broad range of refactorings are not influenced by concurrency at all, whereas other important refactorings can be made behavior-preserving for correctly synchronized programs by using our framework. Experience with a prototype implementation shows that our techniques are easy to implement and require only minimal changes to existing refactoring engines.
-} 
 
