@@ -1,64 +1,3 @@
-<?
-$vLines = file("multirans.bib");
-
-$vPublications = array();
-$sBuffer = "";
-for ($i =0; $i < count($vLines); $i++) {
-	if(strstr($vLines[$i], "@")) {
-		array_push($vPublications, $sBuffer);
-		$sBuffer = $vLines[$i];
-	} else {
-		$sBuffer .= $vLines[$i];
-	}			
-}
-array_push($vPublications, $sBuffer);
-
-function getProperty($sPublication, $sProperty) {
-	$sPublication = str_replace("= {", "", trim($sPublication));	
-
-	$nBegin = strpos($sPublication, $sProperty) + strlen($sProperty);
-	$string = substr($sPublication, $nBegin);
-	$nEnd = strpos($string, "}");
-
-	$sPublication = substr($sPublication, $nBegin, $nEnd);
-
-	return trim($sPublication);
-}
-
-function getIndex($sPublication) {
-	$nBegin = strpos($sPublication, "{") + strlen("{");
-	$var = split(",", $sPublication);
-	return substr($var[0], $nBegin);
-}
-
-function getDOI($sPublication) {
-	$url = getProperty($sPublication, "url");
-	if($url != "") {
-		return $url;
-	}
-
-	$doi = getProperty($sPublication, "doi");
-	if($doi != "") {
-		return $doi;
-	}
-
-	return "";
-}
-
-//the first index always comes with null
-unset($vPublications[0]);
-
-?>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<head>
-<title>Multi-Core code transformation Repository</title>
-<style type="text/css" media="all">
-  @import "style.css";
-</style>
-<script type="text/javascript">
-
 // QuickSearch script for JabRef HTML export 
 // Version: 3.0
 //
@@ -436,7 +375,10 @@ function toggleQSetting() {
 	if(this.id=='searchRev') { searchReview = !searchReview; }
 	redoQS()
 }
-
+-->
+</script>
+<script type="text/javascript">
+<!--
 // Automagically create a dropdown box for column heades marked with the 'dropd' class
 // Mostly useful for year / BibTeX-type fields
 
@@ -523,78 +465,3 @@ function resetFilter(){
 var typeselect = document.getElementById('reftypeselect');
 typeselect.selectedIndex = 0;
 }
-</script>
-<script type="text/javascript" src="sort_table.js"></script>
-</head>
-<body>
-
-<a id="github" href="https://github.com/hagenburger">
-  <span>Fork me on GitHub!</span>
-</a>
-
-<div>
-
-  <h1 align="left"><span class="STYLE13">Repository of Publications on <span class="STYLE19">M</span>ulticore <span class="STYLE19">T</span>ransformations</h1>
-</div>
-<div>
-  <p>This page is maintained by <a href="http://gustavopinto.org" target="_blank">Gustavo Pinto</a>, PhD Candidate at University Center of Pernambuco, Brasil, PE.  </p>
-
-  <p class="style11">Email: ghlp [AT] cin.ufpe.br</p>
-  <p class="style11">&nbsp;</p>
-
-  <p class="STYLE20">Click on any column header to sort</p>
-  <p class="STYLE20">Support for global search, search per column, selection per year, reference type and application.</p>
-</div>
-
-<div id="qs">
-			<form action="">
-			<p>Global Quick Search: <input type="text" name="qsfield" id="qsfield" autocomplete="off" title="Allows plain text as well as RegExp searches (rowbased)"><input type="button" onclick="clearQS()" value="clear">&nbsp; Number of matching entries: <span id="stat">0</span></p>
-			<div id="qssettings">
-				<p onclick="toggleQSettingsDialog()">Search Settings</p>
-				<ul></ul>
-			</div>
-			</form>
-		</div>
-		<table id="qstable" class="sortable" border="1">
-		<thead>
-			<tr>
-				<th width="4%" class="input">Time Stamp</th>
-				<th width="13%" class="input">Author</th>
-				<th class="input">Title</th>
-				<th width="3%" class="dropd">Year</th>
-				<th width="20%" class="input">Journal / Proceedings / Book</th>
-				<th width="3%" class="dropd">BibTeX Type</th>
-				<th width="5%" class="dropd">Application</th>
-			</tr>
-		</thead>
-		<tbody>
-		<? 
-
-			foreach ($vPublications as $publication) {
-				print "<tr id='".getIndex($publication). "' class='entry'>";
-				print "<td style='text-align: center;'>2011.10.01</td>";
-				print "<td>".getProperty($publication, "author")."</td>";
-				print "<td>".getProperty($publication, "title");
-				print "<p class='infolinks'>";
-				print "[<a href='javascript:toggleInfo(\"".getIndex($publication)."\",\"abstract\")'>Abstract</a>]  ";
-				print "[<a href='javascript:toggleInfo(\"".getIndex($publication)."\",\"bibtex\")'>BibTeX</a>] ";
-				print getDOI($publication) != "" ? "[<a href='".getDOI($publication)."'>DOI</a>] </p> </td>" : "</p> </td>";
-				print "<td style='text-align: center;'>".getProperty($publication, "year")."</td>";
-				print "<td>".getProperty($publication, "booktitle").", ".getProperty($publication, "address").".</td>";
-				print "<td>Inproceedings</td>";
-				print "<td>Testing and Debugging</td></tr>";
-				print "<tr id='abs_".getIndex($publication)."' class='abstract noshow'>";
-				print "<td colspan='7'><b>Abstract</b>:".getProperty($publication, "abstract")." </td></tr>";
-				print "<tr id='bib_".getIndex($publication)."' class='bibtex noshow'>";
-				print "<td colspan='7'><b>BibTeX</b>:";
-				print "<pre>". $publication. "</pre></td></tr>";			
- 			}
- 			print "</tbody>"
-		?>
-		</table>
-	</tbody>
-</table>
-
-<p class="style11">This template was borred from <a href="http://crestweb.cs.ucl.ac.uk/resources/sbse_repository/repository.html">SBSE Repository</a>. Thanks <a href="http://www.cs.ucl.ac.uk/staff/Yuanyuan.Zhang/">Yuanyuan Zhang</a>.</p>	
-
-</body></html
