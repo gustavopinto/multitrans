@@ -31,6 +31,14 @@ function getIndex($sPublication) {
 	return substr($var[0], $nBegin);
 }
 
+function getBibtexType($sPublication) {
+	$sBibtexType = str_replace("@", "", $sPublication);
+	$nBegin = strpos($sBibtexType, "{");
+	$sBibtexType = substr($sBibtexType, 0, $nBegin);
+
+	return ucfirst(strtolower($sBibtexType));
+}
+
 function getDOI($sPublication) {
 	$url = getProperty($sPublication, "url");
 	if($url != "") {
@@ -558,13 +566,12 @@ typeselect.selectedIndex = 0;
 		<table id="qstable" class="sortable" border="1">
 		<thead>
 			<tr>
-				<th width="4%" class="input">Time Stamp</th>
-				<th width="13%" class="input">Author</th>
+				
+				<th class="input">Author</th>
 				<th class="input">Title</th>
 				<th width="3%" class="dropd">Year</th>
 				<th width="20%" class="input">Journal / Proceedings / Book</th>
 				<th width="3%" class="dropd">BibTeX Type</th>
-				<th width="5%" class="dropd">Application</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -572,22 +579,17 @@ typeselect.selectedIndex = 0;
 
 			foreach ($vPublications as $publication) {
 				print "<tr id='".getIndex($publication). "' class='entry'>";
-				print "<td style='text-align: center;'>2011.10.01</td>";
+				
 				print "<td>".getProperty($publication, "author")."</td>";
 				print "<td>".getProperty($publication, "title");
 				print "<p class='infolinks'>";
 				print "[<a href='javascript:toggleInfo(\"".getIndex($publication)."\",\"abstract\")'>Abstract</a>]  ";
-				print "[<a href='javascript:toggleInfo(\"".getIndex($publication)."\",\"bibtex\")'>BibTeX</a>] ";
 				print getDOI($publication) != "" ? "[<a href='".getDOI($publication)."'>DOI</a>] </p> </td>" : "</p> </td>";
 				print "<td style='text-align: center;'>".getProperty($publication, "year")."</td>";
 				print "<td>".getProperty($publication, "booktitle").", ".getProperty($publication, "address").".</td>";
-				print "<td>Inproceedings</td>";
-				print "<td>Testing and Debugging</td></tr>";
+				print "<td>".getBibtexType($publication)."</td>";
 				print "<tr id='abs_".getIndex($publication)."' class='abstract noshow'>";
-				print "<td colspan='7'><b>Abstract</b>:".getProperty($publication, "abstract")." </td></tr>";
-				print "<tr id='bib_".getIndex($publication)."' class='bibtex noshow'>";
-				print "<td colspan='7'><b>BibTeX</b>:";
-				print "<pre>". $publication. "</pre></td></tr>";			
+				print "<td colspan='7'><b>Abstract</b>:".getProperty($publication, "abstract")." </td></tr>";		
  			}
  			print "</tbody>"
 		?>
