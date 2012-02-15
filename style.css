@@ -52,11 +52,6 @@
   border: 1px solid #bf6060;
 }
 
-.green.ribbon {
-  background-color: #006e00;
-  background: -webkit-gradient(linear, left bottom, left top, from(#006e00), to(#007200));
-}
-
 
 body { background-color: white; font-family: "Arial", Arial, sans-serif; font-size: 12px; line-height: 1.2; padding: 1em; color: #2E2E2E; }
 

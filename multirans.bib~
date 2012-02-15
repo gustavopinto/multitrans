@@ -107,7 +107,6 @@
  publisher = {ACM},
  address = {New York, NY, USA},
  keywords = {concurrent, java, multicore, open-source, parallel},
- abstract = {We would like to know if Java developers are retrofitting applications to become concurrent and, to get better performance on multicore machines. Also, we would like to know what concurrent programming constructs they currently use. Evidence of how programmers write concurrent programs can help other programmers to be more efficient when using the available constructs. Moreover, this evidence can assist researchers in devising new mechanisms and improving existing ones. For this purpose, we have conducted a study targeting a large-scale Java open source repository, SourceForge. We have analyzed a number of FLOSS projects along two dimensions: spatial and temporal. For the spatial dimension, we studied the latest versions of more than 2000 projects. Our goal is to understand which constructs developers of concurrent systems employ and how frequently they use them. For the temporal dimension we took a closer look at various versions of six projects and analyzed how the use of concurrency constructs has evolved over time. In addition, we tried to establish if uses of concurrency control constructs were aimed at leveraging multicore processors. We have downloaded more than two thousand Java projects including their various versions, in addition to individual analysing about six well known open-source projects.}
 } 
 
 @inproceedings{Brown:2011,
@@ -118,10 +117,7 @@
  year = {2011},
  numpages = {16},
  publisher = {Springer-Verlag},
- address = {Madrid, Spain},
- abstract = {Despite Moore’s “law”, uniprocessor clock speeds have now stalled. Rather than using single processors running at ever higher clock speeds, it is common to find dual-, quad- or even hexa-core processors, even in consumer laptops and desktops. Future hardware will not be slightly parallel, however, as in today’s multicore systems, but will be massively parallel, with manycore and perhaps even megacore systems becoming mainstream. This means that programmers need to start thinking parallel. To achieve this they must move away from traditional programming models and development processes that offer parallelism as an bolted-on afterthought.
-
-This talk introduces the idea of “paraforming”, a new approach to constructing parallel functional programs using formally-defined refactoring transformations. We show how parallel programs can be built from a small number of primitive Haskell building blocks, and describe some new refactorings for Parallel Haskell that capture common parallel abstractions, such as divide-and-conquer and data parallelism using these building blocks. Using a paraforming approach, we are able to easily obtain significant and scalable speedups (up to 7.8 on an 8-core machine).}
+ address = {Madrid, Spain}
 } 
 
 @inproceedings{Dig:2009:RRL:1639950.1640018,
@@ -140,13 +136,11 @@ This talk introduces the idea of “paraforming”, a new approach to constructi
  publisher = {ACM},
  address = {New York, NY, USA},
  keywords = {concurrency, parallelism, program analysis, program transformation, refactoring},
- abstract = {In the multicore era, sequential programs need to be refactored for parallelism. The next version of Java provides ParallelArray, an array datastructure that supports parallel operations over the array elements. For example, one can apply a procedure to each element, or reduce all elements to a new element in parallel. Refactoring an array to a ParallelArray requires (i) analyzing whether the loop iterations are safe for parallel execution, and (ii) replacing loops with the equivalent parallel operations. When done manually, these tasks are non-trivial and time-consuming. This demo presents ReLooper, an Eclipse-based refactoring tool, that performs these tasks automatically. Preliminary experience with refactoring real programs shows that ReLooper is useful.}
 } 
 
 @article{Dig:2011:RAP:1920042.1920077,
  author = {Dig, Danny},
  title = {A Refactoring Approach to Parallelism},
- abstract = {In the multicore era, a major programming task will be to make programs more parallel. This is tedious because it requires changing many lines of code; it's also error-prone and nontrivial because programmers need to ensure noninterference of parallel operations. Fortunately, interactive refactoring tools can help reduce the analysis and transformation burden. The author describes how refactoring tools can improve programmer productivity, program performance, and program portability. The article also describes a toolset that supports several refactorings for making programs thread-safe, threading sequential programs for throughput, and improving scalability of parallel programs.}
  journal = {IEEE Softw.},
  issue_date = {January 2011},
  volume = {28},
@@ -159,7 +153,30 @@ This talk introduces the idea of “paraforming”, a new approach to constructi
  url = {http://dx.doi.org/10.1109/MS.2011.1},
  doi = {10.1109/MS.2011.1},
  acmid = {1920077},
- booktitle = {IEEE Computer Society Press},
+ publisher = {IEEE Computer Society Press},
  address = {Los Alamitos, CA, USA},
  keywords = {refactoring, parallelism, concurrency},
 } 
+
+
+@article{DIG:IEEE,
+    author = {Dig, D.},
+    citeulike-article-id = {10128063},
+    citeulike-linkout-0 = {http://dx.doi.org/10.1109/MS.2011.1},
+    citeulike-linkout-1 = {http://ieeexplore.ieee.org/xpls/abs\_all.jsp?arnumber=5672516},
+    doi = {10.1109/MS.2011.1},
+    institution = {Univ. of Illinois at Urbana-Champaign, Urbana, IL, USA},
+    issn = {0740-7459},
+    journal = {Software, IEEE},
+    keywords = {refactoring},
+    month = jan,
+    number = {1},
+    pages = {17--22},
+    posted-at = {2011-12-14 15:50:46},
+    priority = {3},
+    publisher = {IEEE},
+    title = {{A Refactoring Approach to Parallelism}},
+    url = {http://dx.doi.org/10.1109/MS.2011.1},
+    volume = {28},
+    year = {2011}
+}
