@@ -144,7 +144,7 @@ This talk introduces the idea of “paraforming”, a new approach to constructi
  abstract = {In the multicore era, sequential programs need to be refactored for parallelism. The next version of Java provides ParallelArray, an array datastructure that supports parallel operations over the array elements. For example, one can apply a procedure to each element, or reduce all elements to a new element in parallel. Refactoring an array to a ParallelArray requires (i) analyzing whether the loop iterations are safe for parallel execution, and (ii) replacing loops with the equivalent parallel operations. When done manually, these tasks are non-trivial and time-consuming. This demo presents ReLooper, an Eclipse-based refactoring tool, that performs these tasks automatically. Preliminary experience with refactoring real programs shows that ReLooper is useful.}
 } 
 
-@article{Dig:2011:RAP:1920042.1920077,
+@inproceedings{Dig:2011:RAP:1920042.1920077,
  author = {Dig, Danny},
  title = {A Refactoring Approach to Parallelism},
  abstract = {In the multicore era, a major programming task will be to make programs more parallel. This is tedious because it requires changing many lines of code; it's also error-prone and nontrivial because programmers need to ensure noninterference of parallel operations. Fortunately, interactive refactoring tools can help reduce the analysis and transformation burden. The author describes how refactoring tools can improve programmer productivity, program performance, and program portability. The article also describes a toolset that supports several refactorings for making programs thread-safe, threading sequential programs for throughput, and improving scalability of parallel programs.}
@@ -164,3 +164,25 @@ This talk introduces the idea of “paraforming”, a new approach to constructi
  address = {Los Alamitos, CA, USA},
  keywords = {refactoring, parallelism, concurrency},
 } 
+
+@inproceedings{Kjolstad:2011:TCI:1985793.1985803,
+ author = {Kjolstad, Fredrik and Dig, Danny and Acevedo, Gabriel and Snir, Marc},
+ title = {Transformation for class immutability},
+ booktitle = {Proceedings of the 33rd International Conference on Software Engineering},
+ series = {ICSE '11},
+ year = {2011},
+ isbn = {978-1-4503-0445-0},
+ location = {Waikiki, Honolulu, HI, USA},
+ pages = {61--70},
+ numpages = {10},
+ url = {http://doi.acm.org/10.1145/1985793.1985803},
+ doi = {http://doi.acm.org/10.1145/1985793.1985803},
+ acmid = {1985803},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {immutability, program transformation},
+ abstract = {It is common for object-oriented programs to have both mutable and immutable classes. Immutable classes simplify programing because the programmer does not have to reason about side-effects. Sometimes programmers write immutable classes from scratch, other times they transform mutable into immutable classes. To transform a mutable class, programmers must find all methods that mutate its transitive state and all objects that can enter or escape the state of the class. The analyses are non-trivial and the rewriting is tedious. Fortunately, this can be automated.
+
+We present an algorithm and a tool, Immutator, that enables the programmer to safely transform a mutable class into an immutable class. Two case studies and one controlled experiment show that Immutator is useful. It (i) reduces the burden of making classes immutable, (ii) is fast enough to be used interactively, and (iii) is much safer than manual transformations.}
+} 
+
