@@ -186,3 +186,15 @@ This talk introduces the idea of “paraforming”, a new approach to constructi
 We present an algorithm and a tool, Immutator, that enables the programmer to safely transform a mutable class into an immutable class. Two case studies and one controlled experiment show that Immutator is useful. It (i) reduces the burden of making classes immutable, (ii) is fast enough to be used interactively, and (iii) is much safer than manual transformations.}
 } 
 
+@inproceedings{Okur:FSE,
+  author    = {Semih Okur and
+               Danny Dig},
+  title     = {How do developers use parallel libraries?},
+  booktitle = {SIGSOFT FSE},
+  year      = {2012},
+  pages     = {54},
+  ee        = {http://doi.acm.org/10.1145/2393596.2393660},
+  crossref  = {DBLP:conf/sigsoft/2012},
+  bibsource = {DBLP, http://dblp.uni-trier.de},
+  abstract = {Parallel programming is hard. The industry leaders hope to convert the hard problem of using parallelism into the easier problem of using a parallel library. Yet, we know little about how programmers adopt these libraries in practice. Without such knowledge, other programmers cannot educate themselves about the state of the practice, library designers are unaware of API misusage, researchers make wrong assumptions, and tool vendors do not support common usage of library constructs. We present the first study that analyzes the usage of parallel libraries in a large scale experiment. We analyzed 655 open-source applications that use Microsoft’s new parallel libraries – Task Parallel Library (TPL) and Parallel Language Integrated Query (PLINQ) – comprising 17.6M lines of code written in C#. These applications are developed by 1609 programmers. Using this data, we uncover some interesting facts. For example, (i) for two of the fundamental parallel constructs, in at least 10\% of the cases developers misuse them so that the code runs sequentially instead of concurrently, (ii) developers make their parallel code more complex than it needs to be, (iii) parallel library usage follows a power-law distribution: 10\% of the API methods account for 90\% of the total usage. The TPL library designers confirmed that our finding are useful and will influence the future development of the library.}
+}
